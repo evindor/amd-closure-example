@@ -6,6 +6,7 @@ var gulp = require('gulp'),
 gulp.task('transform', function() {
     gulp.src(['src/**/*.js', 'aloha/src/functions.js'])
         .pipe(closurify({baseUrl: './'}))
+        .pipe(gulp.dest('./build'))
         .pipe(closureDeps({
             fileName: 'deps.js',
             prefix: '../../../'
