@@ -1,3 +1,3 @@
-define([], function Maps() {
+define([], function () {
     return {name: 'maps'};
 })

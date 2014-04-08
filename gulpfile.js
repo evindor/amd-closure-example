@@ -1,8 +1,21 @@
 var gulp = require('gulp'),
-    closurify = require('closurify');
+    closurify = require('closurify'),
+    closureDeps = require('gulp-closure-deps'),
+    closureCompiler = require('gulp-closure-compiler');
 
-gulp.task('build', function() {
+gulp.task('transform', function() {
     gulp.src('src/**/*.js')
         .pipe(closurify({baseUrl: './'}))
+        .pipe(closureDeps({
+            fileName: 'deps.js'
+        }))
         .pipe(gulp.dest('./build'));
 });
+
+gulp.task('compile', function() {
+    gulp.src('build/**/*.js')
+        .pipe(closureCompiler())
+        .pipe(gulp.dest('./compiled'));
+});
+
+gulp.task('build', ['transform', 'compile'])

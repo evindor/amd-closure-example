@@ -19,5 +19,9 @@
   "dependencies": {
     "gulp": "^3.6.0",
     "closurify": "https://github.com/evindor/closurify/tarball/master"
+  },
+  "devDependencies": {
+    "gulp-closure-compiler": "^0.1.2",
+    "gulp-closure-deps": "^0.1.3"
   }
 }
