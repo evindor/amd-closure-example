@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/evindor/amd-closure-example",
   "dependencies": {
-    "gulp": "^3.6.0"
+    "gulp": "^3.6.0",
+    "closurify": "https://github.com/evindor/closurify/tarball/master"
   }
 }

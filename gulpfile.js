@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    closurify = require('gulp-amd-to-closure');
+    closurify = require('closurify');
 
 gulp.task('build', function() {
     gulp.src('src/**/*.js')
