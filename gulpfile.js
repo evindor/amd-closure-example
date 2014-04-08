@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     closurify = require('closurify'),
     closureDeps = require('gulp-closure-deps'),
-    closureCompiler = require('gulp-closure-compiler');
+    closureCompiler = require('gulp-closure-compiler'),
+    connect = require('gulp-connect');
 
 gulp.task('transform', function() {
     gulp.src(['src/**/*.js', 'aloha/src/functions.js'])
@@ -14,10 +15,23 @@ gulp.task('transform', function() {
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task('compile', function() {
-    gulp.src('build/**/*.js')
-        .pipe(closureCompiler())
-        .pipe(gulp.dest('./compiled'));
+//gulp.task('compile', function() {
+    //gulp.src('build/**/*.js')
+        //.pipe(closureCompiler())
+        //.pipe(gulp.dest('./compiled'));
+//});
+
+//gulp.task('build', ['transform', 'compile'])
+
+gulp.task('watch', function() {
+    gulp.watch('src/**/*.js', ['transform']);
+    gulp.watch('aloha/src/**/*.js', ['transform']);
 });
 
-gulp.task('build', ['transform', 'compile'])
+gulp.task('server', function() {
+    connect.server({
+        port: 8001
+    });
+});
+
+gulp.task('default', ['server', 'watch']);
