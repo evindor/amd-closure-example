@@ -14,7 +14,7 @@ gulp.task('transform', function() {
         }))
         .pipe(gulp.dest('./build'));
 
-    gulp.src(['aloha/src/functions.js'])
+    gulp.src(['aloha/src/**/*.js'])
         .pipe(closurify({baseUrl: './'}))
         .pipe(gulp.dest('./build/aloha'))
         .pipe(closureDeps({
