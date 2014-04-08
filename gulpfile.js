@@ -4,10 +4,11 @@ var gulp = require('gulp'),
     closureCompiler = require('gulp-closure-compiler');
 
 gulp.task('transform', function() {
-    gulp.src('src/**/*.js')
+    gulp.src(['src/**/*.js', 'aloha/src/functions.js'])
         .pipe(closurify({baseUrl: './'}))
         .pipe(closureDeps({
-            fileName: 'deps.js'
+            fileName: 'deps.js',
+            prefix: '../../../'
         }))
         .pipe(gulp.dest('./build'));
 });

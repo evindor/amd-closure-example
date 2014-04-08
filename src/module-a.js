@@ -1,4 +1,4 @@
-define(["maps", "aloha/src/maps"], function(maps, alohaMaps) {
+define(["src/maps", "aloha/src/functions"], function(maps, alohaMaps) {
     console.log(maps.name);
     console.log(alohaMaps);
 });
