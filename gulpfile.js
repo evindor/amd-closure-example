@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');
 
 gulp.task('transform', function() {
-    gulp.src(['src/**/*.js', 'aloha/src/functions.js'])
+    gulp.src(['src/**/*.js'])
         .pipe(closurify({baseUrl: './'}))
         .pipe(gulp.dest('./build'))
         .pipe(closureDeps({
@@ -13,6 +13,15 @@ gulp.task('transform', function() {
             prefix: '../../../'
         }))
         .pipe(gulp.dest('./build'));
+
+    gulp.src(['aloha/src/functions.js'])
+        .pipe(closurify({baseUrl: './'}))
+        .pipe(gulp.dest('./build/aloha'))
+        .pipe(closureDeps({
+            fileName: 'deps.js',
+            prefix: '../../../'
+        }))
+        .pipe(gulp.dest('./build/aloha'));
 });
 
 //gulp.task('compile', function() {
